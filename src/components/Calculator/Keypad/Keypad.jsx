@@ -1,4 +1,5 @@
 import Button from "@components/Button/Button";
+import { useSelector } from "react-redux";
 import { KeypadWrapper } from "./styled";
 
 const buttonsArr = [
@@ -25,10 +26,11 @@ const buttonsArr = [
 ];
 
 const Keypad = () => {
+  const btnColor = useSelector((state) => state.theme.btnColor);
   return (
     <KeypadWrapper>
       {buttonsArr.map((e, i) => {
-        return <Button name={e} />;
+        return <Button color={btnColor} name={e} />;
       })}
     </KeypadWrapper>
   );

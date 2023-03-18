@@ -6,7 +6,7 @@ export const CustomButton = styled.button`
   font-size: 40px;
   border-radius: 30px;
   &:hover {
-    background-color: white;
+    background-color: ${(props) => props.color || props.textColor};
   }
 `;
 
