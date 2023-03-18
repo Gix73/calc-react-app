@@ -4,15 +4,8 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import store from "./store/store";
 import { Provider } from "react-redux";
-import { createGlobalStyle } from "styled-components";
 import { BrowserRouter } from "react-router-dom";
-
-const Global = createGlobalStyle`
-*{
-	margin:0;
-	padding:0;
-	box-sizing:border-box;
-}`;
+import { Global } from "./globalStyled";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
