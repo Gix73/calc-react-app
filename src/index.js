@@ -4,9 +4,8 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import store from "./store/store";
 import { Provider } from "react-redux";
-import { createGlobalStyle, ThemeProvider } from "styled-components";
+import { createGlobalStyle } from "styled-components";
 import { BrowserRouter } from "react-router-dom";
-import theme from "./constants/constants";
 
 const Global = createGlobalStyle`
 *{
@@ -18,14 +17,12 @@ const Global = createGlobalStyle`
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
-  <ThemeProvider theme={theme}>
-    <BrowserRouter>
-      <Provider store={store}>
-        <Global />
-        <App />
-      </Provider>
-    </BrowserRouter>
-  </ThemeProvider>
+  <BrowserRouter>
+    <Provider store={store}>
+      <Global />
+      <App />
+    </Provider>
+  </BrowserRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -30,7 +30,7 @@ const Keypad = () => {
   return (
     <KeypadWrapper>
       {buttonsArr.map((e, i) => {
-        return <Button color={btnColor} name={e} />;
+        return <Button color={btnColor} name={e} key={e} />;
       })}
     </KeypadWrapper>
   );
