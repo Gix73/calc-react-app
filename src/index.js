@@ -8,7 +8,7 @@ import { BrowserRouter } from "react-router-dom";
 import { Global } from "./globalStyled";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-
+console.log(store.getState());
 root.render(
   <BrowserRouter>
     <Provider store={store}>

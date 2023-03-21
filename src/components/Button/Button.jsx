@@ -3,7 +3,7 @@ import { ButtonWrapper, CustomButton } from "./styled";
 const Button = (props) => {
   return (
     <ButtonWrapper>
-      <CustomButton>{props.name}</CustomButton>
+      <CustomButton onClick={props.func}>{props.name}</CustomButton>
     </ButtonWrapper>
   );
 };
