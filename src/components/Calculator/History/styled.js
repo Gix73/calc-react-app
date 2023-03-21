@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const HistoryWrapper = styled.div`
   position: relative;
   grid-area: history;
+  overflow-x: auto;
   padding: 0px 10px;
-  overflow: auto;
   border-left: 5px solid grey;
 `;
 
@@ -20,6 +20,7 @@ export const ResultWrapper = styled.div`
   display: flex;
   width: 100%;
   height: 90%;
+  overflow: auto;
   flex-direction: column;
   align-items: center;
   margin-top: 30px;
