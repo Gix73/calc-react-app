@@ -1,14 +1,19 @@
-import { HistoryWrapper, ResultWrapper, SpanHist } from "./styled";
+import { useSelector } from "react-redux";
+import { HistoryRes, HistoryWrapper, ResultWrapper, SpanHist } from "./styled";
 
 const History = () => {
+  const { history } = useSelector((state) => state.calc);
+
+  const historyData = history.map((e, i) => {
+    return <HistoryRes key={"hId:" + i}>{e}</HistoryRes>;
+  });
+
   return (
     <HistoryWrapper>
       <SpanHist>
         <span>History</span>
       </SpanHist>
-      <ResultWrapper>
-        <div>123</div>
-      </ResultWrapper>
+      <ResultWrapper>{historyData}</ResultWrapper>
     </HistoryWrapper>
   );
 };

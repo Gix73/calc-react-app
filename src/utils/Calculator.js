@@ -56,7 +56,6 @@ class Calculator {
     // debugger;
     this.commands = [...commandsCreater(this.inputs, this.signs)];
     for (let command of this.commands) {
-      console.log(command);
       this.result = command.execute(this.result);
     }
     this.commands = [];

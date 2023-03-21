@@ -65,11 +65,12 @@ const calcSlice = createSlice({
     },
     equal(state, action) {
       console.log("equal");
-      state.expression = "";
       if (state.data) {
         state.receiver.setInputs(state.data);
       }
       state.result = state.receiver.execute();
+      state.history.push(state.expression + "=" + state.result);
+      state.expression = "";
       state.data = "";
     },
   },
