@@ -14,11 +14,25 @@ class Calculator {
   }
 
   setInputs(input) {
-    this.inputs.push(input);
+    if (input) {
+      this.inputs.push(input);
+    }
+  }
+
+  getExpression(exp) {
+    const signs = "+-*/";
+    if (signs.includes(exp[exp.length - 1])) {
+      return exp.slice(0, -1) + this.signs[this.signs.length - 1];
+    }
+    return exp + this.signs[this.signs.length - 1];
   }
 
   setSign(sign) {
-    this.signs.push(sign);
+    if (this.inputs.length === this.signs.length) {
+      this.signs[this.signs.length - 1] = sign;
+    } else {
+      this.signs.push(sign);
+    }
   }
 
   setInitialValue(val) {

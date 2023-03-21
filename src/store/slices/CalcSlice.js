@@ -12,20 +12,18 @@ const calcSlice = createSlice({
     receiver: new Calculator(),
     data: "",
     history: [],
+    expression: "",
     numbers: [],
     result: 0,
   },
   reducers: {
     inputNum(state, action) {
       console.log("n: " + action.payload);
-      // if (state.receiver.commands.length === 0) {
-      //   state.receiver.setInitialValue(action.payload);
-      // }
-
       if (state.receiver.signs.length === 0) {
         state.receiver.setInitialValue(action.payload);
       }
       state.data += action.payload;
+      state.expression += action.payload;
     },
     inputSign(state, action) {
       console.log("s: " + action.payload);
@@ -39,6 +37,7 @@ const calcSlice = createSlice({
       state.receiver.setSign("+");
       // state.receiver.setCommand(new PlusCommand(state.data));
       state.data = "";
+      state.expression = state.receiver.getExpression(state.expression);
     },
     subtract(state, action) {
       console.log("-: " + action.payload);
@@ -46,6 +45,7 @@ const calcSlice = createSlice({
       state.receiver.setSign("-");
       // state.receiver.setCommand(new SubtractCommand(state.data));
       state.data = "";
+      state.expression = state.receiver.getExpression(state.expression);
     },
     multiply(state, action) {
       console.log("*: " + action.payload);
@@ -53,6 +53,7 @@ const calcSlice = createSlice({
       state.receiver.setSign("*");
       // state.receiver.setCommand(new MultiplyCommand(state.data));
       state.data = "";
+      state.expression = state.receiver.getExpression(state.expression);
     },
     divide(state, action) {
       console.log("/: " + action.payload);
@@ -60,22 +61,14 @@ const calcSlice = createSlice({
       state.receiver.setSign("/");
       // state.receiver.setCommand(new DivideCommand(state.data));
       state.data = "";
+      state.expression = state.receiver.getExpression(state.expression);
     },
     equal(state, action) {
       console.log("equal");
+      state.expression = "";
       if (state.data) {
         state.receiver.setInputs(state.data);
       }
-      ////// if (state.data) {
-      //////   state.receiver.setCommand(
-      //////     new state.receiver.commands[
-      //////       state.receiver.commands.length - 1
-      //////     ].constructor(state.data)
-      //////   );
-      ////// }
-      //// state.receiver.setCommand(new EqualCommand(state.data));
-      // state.receiver.setCommand(action.payload(state.data));
-      // state.receiver.setInputs(state.data);
       state.result = state.receiver.execute();
       state.data = "";
     },

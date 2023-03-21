@@ -2,10 +2,10 @@ import { useSelector } from "react-redux";
 import { ResSpan, ScreenWrapper } from "./styled";
 
 const Display = () => {
-  const { result } = useSelector((state) => state.calc);
+  const { result, expression, receiver } = useSelector((state) => state.calc);
   return (
     <ScreenWrapper>
-      <ResSpan>{result}</ResSpan>
+      <ResSpan>{receiver.result !== 0 ? expression : result}</ResSpan>
     </ScreenWrapper>
   );
 };
