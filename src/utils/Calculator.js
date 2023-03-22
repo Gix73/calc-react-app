@@ -5,9 +5,7 @@ class Calculator {
   constructor() {
     this.commands = [];
     this.inputs = [];
-    this.resultCommands = [];
     this.initialValues = [];
-    // this.signs = [];
     this.current = 0;
     this.result = 0;
   }
@@ -18,7 +16,6 @@ class Calculator {
   }
 
   setInputs(input) {
-    // debugger;
     const signs = "+-*/";
     if (input) {
       if (
@@ -32,32 +29,14 @@ class Calculator {
     }
   }
 
-  getExpression(exp) {
-    const signs = "+-*/";
-    if (signs.includes(exp[exp.length - 1])) {
-      return exp.slice(0, -1) + this.signs[this.signs.length - 1];
-    }
-    return exp + this.signs[this.signs.length - 1];
+  getExpression() {
+    return this.inputs.join("");
   }
-
-  // setSign(sign) {
-  //   if (this.inputs.length === this.signs.length) {
-  //     this.signs[this.signs.length - 1] = sign;
-  //   } else {
-  //     this.signs.push(sign);
-  //   }
-  // }
 
   setInitialValue() {
     for (let i = 0; i < this.commands.length; i++) {
       this.initialValues.push(0);
     }
-    // if (this.result) {
-    //   let newNum = this.result + val;
-    //   this.result = Number(newNum);
-    // } else {
-    //   this.result += Number(val);
-    // }
   }
 
   getResult() {
@@ -83,7 +62,9 @@ class Calculator {
     this.commands = [];
     this.inputs = [];
     this.signs = [];
-    let res = this.result;
+    let res = Number.isInteger(this.result)
+      ? this.result
+      : this.result.toFixed(3);
     this.result = 0;
     return res;
   }

@@ -38,7 +38,7 @@ const calcSlice = createSlice({
       // state.receiver.setSign("+");
       // state.receiver.setCommand(new PlusCommand(state.data));
       state.data = "";
-      // state.expression = state.receiver.getExpression(state.expression);
+      state.expression = state.receiver.getExpression();
     },
     subtract(state, action) {
       console.log("-: " + action.payload);
@@ -47,7 +47,7 @@ const calcSlice = createSlice({
       // state.receiver.setSign("-");
       // state.receiver.setCommand(new SubtractCommand(state.data));
       state.data = "";
-      // state.expression = state.receiver.getExpression(state.expression);
+      state.expression = state.receiver.getExpression();
     },
     multiply(state, action) {
       console.log("*: " + action.payload);
@@ -56,7 +56,7 @@ const calcSlice = createSlice({
       // state.receiver.setSign("*");
       // state.receiver.setCommand(new MultiplyCommand(state.data));
       state.data = "";
-      // state.expression = state.receiver.getExpression(state.expression);
+      state.expression = state.receiver.getExpression();
     },
     divide(state, action) {
       console.log("/: " + action.payload);
@@ -65,17 +65,17 @@ const calcSlice = createSlice({
       // state.receiver.setSign("/");
       // state.receiver.setCommand(new DivideCommand(state.data));
       state.data = "";
-      // state.expression = state.receiver.getExpression(state.expression);
+      state.expression = state.receiver.getExpression();
     },
     leftBracket(state, action) {
       // state.receiver.setSign("(");
       state.data = "";
-      // state.expression = state.receiver.getExpression(state.expression);
+      state.expression = state.receiver.getExpression();
     },
     rightBracket(state, action) {
       // state.receiver.setSign(")");
       state.data = "";
-      // state.expression = state.receiver.getExpression(state.expression);
+      state.expression = state.receiver.getExpression();
     },
     equal(state, action) {
       console.log("equal");
@@ -85,7 +85,7 @@ const calcSlice = createSlice({
       state.receiver.setCommands();
       state.receiver.setInitialValue();
       state.result = state.receiver.execute();
-      // state.history.push(state.expression + "=" + state.result);
+      state.history.push(state.expression + "=" + state.result);
       state.expression = "";
       state.data = "";
     },
