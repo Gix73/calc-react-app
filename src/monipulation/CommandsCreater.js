@@ -3,23 +3,30 @@ import MultiplyCommand from "../utils/MultiplyCommand";
 import PlusCommand from "../utils/PlusCommand";
 import SubtractCommand from "../utils/SubtractCommand";
 
-export default function commandsCreater(inputs, signs) {
+export default function commandsCreater(inputs) {
   let commands = [];
-
-  for (let i = 0; i < signs.length; i++) {
-    if (signs[i] === "+") {
-      commands.push(new PlusCommand(inputs[i + 1]));
-    }
-    if (signs[i] === "-") {
-      commands.push(new SubtractCommand(inputs[i + 1]));
-    }
-    if (signs[i] === "*") {
-      commands.push(new MultiplyCommand(inputs[i + 1]));
-    }
-    if (signs[i] === "/") {
-      commands.push(new DivideCommand(inputs[i + 1]));
+  debugger;
+  for (let i = 0; i < inputs.length; i++) {
+    commands.push([]);
+    for (let j = 0; j < inputs[i].length; j++) {
+      if (inputs[i][j] === "+") {
+        commands[i].push(new PlusCommand(Number(inputs[i][j + 1])));
+        j++;
+      }
+      if (inputs[i][j] === "-") {
+        commands[i].push(new SubtractCommand(Number(inputs[i][j + 1])));
+        j++;
+      }
+      if (inputs[i][j] === "*") {
+        commands[i].push(new MultiplyCommand(Number(inputs[i][j + 1])));
+        j++;
+      }
+      if (inputs[i][j] === "/") {
+        commands[i].push(new DivideCommand(Number(inputs[i][j + 1])));
+        j++;
+      }
     }
   }
-
+  debugger;
   return commands;
 }

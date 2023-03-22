@@ -1,10 +1,12 @@
 import commandsCreater from "../monipulation/CommandsCreater";
+import inputsSort from "../monipulation/InputsSort";
 
 class Calculator {
   constructor() {
     this.commands = [];
     this.inputs = [];
-    this.signs = [];
+    this.resultCommands = [];
+    // this.signs = [];
     this.current = 0;
     this.result = 0;
   }
@@ -14,8 +16,17 @@ class Calculator {
   }
 
   setInputs(input) {
+    // debugger;
+    const signs = "+-*/";
     if (input) {
-      this.inputs.push(input);
+      if (
+        signs.includes(this.inputs[this.inputs.length - 1]) &&
+        signs.includes(input)
+      ) {
+        this.inputs[this.inputs.length - 1] = input;
+      } else {
+        this.inputs.push(input);
+      }
     }
   }
 
@@ -27,13 +38,13 @@ class Calculator {
     return exp + this.signs[this.signs.length - 1];
   }
 
-  setSign(sign) {
-    if (this.inputs.length === this.signs.length) {
-      this.signs[this.signs.length - 1] = sign;
-    } else {
-      this.signs.push(sign);
-    }
-  }
+  // setSign(sign) {
+  //   if (this.inputs.length === this.signs.length) {
+  //     this.signs[this.signs.length - 1] = sign;
+  //   } else {
+  //     this.signs.push(sign);
+  //   }
+  // }
 
   setInitialValue(val) {
     if (this.result) {
@@ -53,8 +64,8 @@ class Calculator {
   }
 
   execute() {
-    // debugger;
-    this.commands = [...commandsCreater(this.inputs, this.signs)];
+    this.inputs = inputsSort(this.inputs);
+    this.commands = commandsCreater(this.inputs);
     for (let command of this.commands) {
       this.result = command.execute(this.result);
     }
