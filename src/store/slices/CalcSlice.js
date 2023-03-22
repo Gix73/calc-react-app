@@ -82,6 +82,8 @@ const calcSlice = createSlice({
       if (state.data) {
         state.receiver.setInputs(state.data);
       }
+      state.receiver.setCommands();
+      state.receiver.setInitialValue();
       state.result = state.receiver.execute();
       // state.history.push(state.expression + "=" + state.result);
       state.expression = "";

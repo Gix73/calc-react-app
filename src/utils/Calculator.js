@@ -6,13 +6,15 @@ class Calculator {
     this.commands = [];
     this.inputs = [];
     this.resultCommands = [];
+    this.initialValues = [];
     // this.signs = [];
     this.current = 0;
     this.result = 0;
   }
 
-  setCommand(command) {
-    this.commands.push(command);
+  setCommands() {
+    this.inputs = inputsSort(this.inputs);
+    this.commands = commandsCreater(this.inputs);
   }
 
   setInputs(input) {
@@ -46,13 +48,16 @@ class Calculator {
   //   }
   // }
 
-  setInitialValue(val) {
-    if (this.result) {
-      let newNum = this.result + val;
-      this.result = Number(newNum);
-    } else {
-      this.result += Number(val);
+  setInitialValue() {
+    for (let i = 0; i < this.commands.length; i++) {
+      this.initialValues.push(0);
     }
+    // if (this.result) {
+    //   let newNum = this.result + val;
+    //   this.result = Number(newNum);
+    // } else {
+    //   this.result += Number(val);
+    // }
   }
 
   getResult() {
@@ -64,11 +69,17 @@ class Calculator {
   }
 
   execute() {
-    this.inputs = inputsSort(this.inputs);
-    this.commands = commandsCreater(this.inputs);
-    for (let command of this.commands) {
-      this.result = command.execute(this.result);
+    debugger;
+    for (let i = 0; i < this.commands.length; i++) {
+      for (let j = 0; j < this.commands[i].length; j++) {
+        this.initialValues[i] = this.commands[i][j].execute(
+          this.initialValues[i]
+        );
+      }
     }
+
+    this.result = this.initialValues.reduce((acc, e, i) => acc + e);
+    this.initialValues = [];
     this.commands = [];
     this.inputs = [];
     this.signs = [];

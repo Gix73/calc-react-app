@@ -5,7 +5,6 @@ import SubtractCommand from "../utils/SubtractCommand";
 
 export default function commandsCreater(inputs) {
   let commands = [];
-  debugger;
   for (let i = 0; i < inputs.length; i++) {
     commands.push([]);
     for (let j = 0; j < inputs[i].length; j++) {
@@ -27,6 +26,6 @@ export default function commandsCreater(inputs) {
       }
     }
   }
-  debugger;
+
   return commands;
 }
