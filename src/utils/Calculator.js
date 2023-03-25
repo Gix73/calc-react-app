@@ -9,6 +9,8 @@ class Calculator {
     this.newValues = [];
     this.current = 0;
     this.result = 0;
+    this.lBrackets = 0;
+    this.rBrackets = 0;
   }
 
   setCommands() {
@@ -18,12 +20,20 @@ class Calculator {
     this.commands = [...data.reverse()];
   }
 
+  checkBrackets() {
+    if (this.lBrackets > this.rBrackets) {
+      for (let i = 0; i < this.lBrackets - this.rBrackets; i++) {
+        this.inputs.push(")");
+      }
+    }
+  }
+
   clearData() {
     this.inputs = [];
   }
 
   setInputs(input) {
-    const signs = "+-*/";
+    const signs = "+-*/%";
     if (input) {
       if (
         signs.includes(this.inputs[this.inputs.length - 1]) &&
@@ -31,7 +41,17 @@ class Calculator {
       ) {
         this.inputs[this.inputs.length - 1] = input;
       } else {
-        this.inputs.push(input);
+        if (input === ")") {
+          if (this.lBrackets > this.rBrackets) {
+            this.inputs.push(input);
+            this.rBrackets++;
+          }
+        } else {
+          if (input === "(") {
+            this.lBrackets++;
+          }
+          this.inputs.push(input);
+        }
       }
     }
   }
@@ -74,11 +94,17 @@ class Calculator {
         this.commands.pop();
       }
     }
-    this.result = this.newValues.pop();
+
+    this.result =
+      this.newValues.length !== 0
+        ? this.newValues.pop()
+        : Number(this.inputs.length === 0 ? 0 : this.inputs.pop());
     this.initialValues = [];
     this.commands = [];
     this.inputs = [];
     this.signs = [];
+    this.lBrackets = 0;
+    this.rBrackets = 0;
     let res = Number.isInteger(this.result)
       ? this.result
       : this.result.toFixed(3);

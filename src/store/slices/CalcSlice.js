@@ -91,8 +91,16 @@ const calcSlice = createSlice({
         state.receiver.setInputs(state.data);
       }
 
+      state.receiver.checkBrackets();
+      state.expression = state.receiver.getExpression();
       state.receiver.setCommands();
       state.result = state.receiver.execute();
+
+      if (state.expression.length !== 0) {
+        if ("-*/+%".includes(state.expression[state.expression.length - 1]))
+          state.expression = state.expression.slice(0, -1);
+      }
+
       state.history.push(state.expression + "=" + state.result);
       state.expression = "";
       state.data = "";
