@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import theme from "@constants/constants";
+import { clearHistory } from "@store/slices/CalcSlice";
 import { toggleTheme } from "@store/slices/ThemeSlice";
 import {
   ClearButton,
@@ -50,7 +51,9 @@ const SettingsPanel = () => {
             <option value="Dark Theme">Dark Theme</option>
           </SelectTheme>
         </SelectThemeWrapper>
-        <ClearButton>Clear All History</ClearButton>
+        <ClearButton onClick={() => dispatch(clearHistory())}>
+          Clear All History
+        </ClearButton>
       </SettingsContainer>
     </SettingsPWrapper>
   );
