@@ -2,8 +2,10 @@ import {
   divide,
   equal,
   inputNum,
+  leftBracket,
   multiply,
   plus,
+  rightBracket,
   subtract,
 } from "../store/slices/CalcSlice";
 
@@ -26,5 +28,11 @@ export default function setFunction(d, val) {
   }
   if (val === "=") {
     d(equal());
+  }
+  if (val === "(") {
+    d(leftBracket());
+  }
+  if (val === ")") {
+    d(rightBracket());
   }
 }

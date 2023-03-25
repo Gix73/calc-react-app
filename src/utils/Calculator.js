@@ -1,47 +1,39 @@
-import commandsCreater from "../monipulation/CommandsCreater";
+import correctExpression from "../monipulation/CorrectExpression";
+import createPolishNotation from "../monipulation/CreatePolishNotation";
+import polishSolver from "../monipulation/PolishSolver";
 
 class Calculator {
   constructor() {
     this.commands = [];
     this.inputs = [];
-    this.signs = [];
+    this.newValues = [];
     this.current = 0;
     this.result = 0;
   }
 
-  setCommand(command) {
-    this.commands.push(command);
+  setCommands() {
+    this.inputs = correctExpression(this.inputs);
+    this.inputs = createPolishNotation(this.inputs);
+    const data = polishSolver(this.inputs);
+    this.commands = [...data.reverse()];
   }
 
   setInputs(input) {
-    if (input) {
-      this.inputs.push(input);
-    }
-  }
-
-  getExpression(exp) {
     const signs = "+-*/";
-    if (signs.includes(exp[exp.length - 1])) {
-      return exp.slice(0, -1) + this.signs[this.signs.length - 1];
-    }
-    return exp + this.signs[this.signs.length - 1];
-  }
-
-  setSign(sign) {
-    if (this.inputs.length === this.signs.length) {
-      this.signs[this.signs.length - 1] = sign;
-    } else {
-      this.signs.push(sign);
+    if (input) {
+      if (
+        signs.includes(this.inputs[this.inputs.length - 1]) &&
+        signs.includes(input)
+      ) {
+        this.inputs[this.inputs.length - 1] = input;
+      } else {
+        this.inputs.push(input);
+      }
     }
   }
 
-  setInitialValue(val) {
-    if (this.result) {
-      let newNum = this.result + val;
-      this.result = Number(newNum);
-    } else {
-      this.result += Number(val);
-    }
+  getExpression() {
+    return this.inputs.join("");
   }
 
   getResult() {
@@ -53,15 +45,39 @@ class Calculator {
   }
 
   execute() {
-    // debugger;
-    this.commands = [...commandsCreater(this.inputs, this.signs)];
-    for (let command of this.commands) {
-      this.result = command.execute(this.result);
+    for (let i = this.commands.length - 1; i > -1; i--) {
+      if (
+        !Number.isNaN(this.commands[i].value) &&
+        !Number.isNaN(this.commands[i].v2)
+      ) {
+        this.newValues.push(this.commands[i].execute());
+        this.commands.pop();
+      } else if (!Number.isNaN(this.commands[i].value)) {
+        this.commands[i].v2 = this.newValues.pop();
+        this.newValues.push(this.commands[i].execute());
+        this.commands.pop();
+      } else if (!Number.isNaN(this.commands[i].v2)) {
+        this.commands[i].value = this.newValues.pop();
+        this.newValues.push(this.commands[i].execute());
+        this.commands.pop();
+      } else if (
+        Number.isNaN(this.commands[i].value) &&
+        Number.isNaN(this.commands[i].v2)
+      ) {
+        this.commands[i].v2 = this.newValues.pop();
+        this.commands[i].value = this.newValues.pop();
+        this.newValues.push(this.commands[i].execute());
+        this.commands.pop();
+      }
     }
+    this.result = this.newValues.pop();
+    this.initialValues = [];
     this.commands = [];
     this.inputs = [];
     this.signs = [];
-    let res = this.result;
+    let res = Number.isInteger(this.result)
+      ? this.result
+      : this.result.toFixed(3);
     this.result = 0;
     return res;
   }
