@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const HistoryWrapper = styled.div`
   position: relative;
   grid-area: history;
-  overflow-x: auto;
   padding: 0px 10px;
   border-left: 5px solid grey;
 `;
@@ -38,4 +37,10 @@ export const HistoryRes = styled.div`
   width: 90%;
   height: auto;
   text-align: center;
+`;
+
+export const ClearButton = styled.button`
+  font-size: 12px;
+  width: 100%;
+  height: auto;
 `;

@@ -1,4 +1,6 @@
 import {
+  clearAll,
+  clearExpression,
   divide,
   equal,
   inputNum,
@@ -38,5 +40,11 @@ export default function setFunction(d, val) {
   }
   if (val === "%") {
     d(remainderDiv());
+  }
+  if (val === "C") {
+    d(clearExpression());
+  }
+  if (val === "CE") {
+    d(clearAll());
   }
 }

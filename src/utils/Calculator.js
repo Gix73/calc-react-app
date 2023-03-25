@@ -18,6 +18,10 @@ class Calculator {
     this.commands = [...data.reverse()];
   }
 
+  clearData() {
+    this.inputs = [];
+  }
+
   setInputs(input) {
     const signs = "+-*/";
     if (input) {

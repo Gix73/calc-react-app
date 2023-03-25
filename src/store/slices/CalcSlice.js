@@ -69,6 +69,22 @@ const calcSlice = createSlice({
       state.data = "";
       state.expression = state.receiver.getExpression();
     },
+    clearExpression(state) {
+      state.expression = "";
+      state.data = "";
+      state.receiver.clearData();
+      state.result = 0;
+    },
+    clearAll(state) {
+      state.expression = "";
+      state.data = "";
+      state.receiver.clearData();
+      state.history = [];
+      state.result = 0;
+    },
+    clearHistory(state) {
+      state.history = [];
+    },
     equal(state, action) {
       console.log("equal");
       if (state.data) {
@@ -95,5 +111,8 @@ export const {
   remainderDiv,
   leftBracket,
   rightBracket,
+  clearExpression,
+  clearAll,
+  clearHistory,
 } = calcSlice.actions;
 export default calcSlice.reducer;
