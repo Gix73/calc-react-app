@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { clearHistory } from "../../../store/slices/CalcSlice";
+import { clearHistory } from "@store/slices/CalcSlice";
 import {
   ClearButton,
   HistoryRes,

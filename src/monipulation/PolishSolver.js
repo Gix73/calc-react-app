@@ -1,8 +1,8 @@
-import DivideCommand from "../utils/DivideCommand";
-import MultiplyCommand from "../utils/MultiplyCommand";
-import PlusCommand from "../utils/PlusCommand";
-import RemainderDivCommand from "../utils/RemainderDivCommand";
-import SubtractCommand from "../utils/SubtractCommand";
+import DivideCommand from "@utils/DivideCommand";
+import MultiplyCommand from "@utils/MultiplyCommand";
+import PlusCommand from "@utils/PlusCommand";
+import RemainderDivCommand from "@utils/RemainderDivCommand";
+import SubtractCommand from "@utils/SubtractCommand";
 import getPriority from "./GetPriority";
 
 export default function polishSolver(inputs) {

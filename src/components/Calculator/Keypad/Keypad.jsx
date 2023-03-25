@@ -1,7 +1,7 @@
 import Button from "@components/Button/Button";
 import { useDispatch, useSelector } from "react-redux";
-import setFunction from "../../../constants/buttons";
-import { buttonsArr } from "../../../constants/constants";
+import setFunction from "@constants/buttons";
+import { buttonsArr } from "@constants/constants";
 import { KeypadWrapper } from "./styled";
 
 const Keypad = () => {

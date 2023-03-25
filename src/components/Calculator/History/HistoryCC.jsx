@@ -1,5 +1,5 @@
 import React from "react";
-import { clearHistory } from "../../../store/slices/CalcSlice";
+import { clearHistory } from "@store/slices/CalcSlice";
 import { connect } from "react-redux";
 import {
   ClearButton,

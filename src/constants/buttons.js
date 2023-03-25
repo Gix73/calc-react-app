@@ -10,7 +10,7 @@ import {
   remainderDiv,
   rightBracket,
   subtract,
-} from "../store/slices/CalcSlice";
+} from "@store/slices/CalcSlice";
 
 export default function setFunction(d, val) {
   let num = "1234567890.";
