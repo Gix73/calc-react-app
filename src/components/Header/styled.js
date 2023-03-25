@@ -19,7 +19,8 @@ export const LogoWrapper = styled.div`
 export const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
-  width: 200px;
+  max-width: 400px;
+  width: 100%;
 `;
 export const StyledLink = styled(NavLink)`
   text-decoration: none;

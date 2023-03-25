@@ -8,7 +8,10 @@ const Header = () => {
       </LogoWrapper>
       <Nav>
         <div>
-          <StyledLink to="/">Home</StyledLink>
+          <StyledLink to="/">HomeFC</StyledLink>
+        </div>
+        <div>
+          <StyledLink to="/calcCC">HomeCC</StyledLink>
         </div>
         <div>
           <StyledLink to="/settings">Settings</StyledLink>
