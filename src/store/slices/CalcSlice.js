@@ -1,10 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import Calculator from "../../utils/Calculator";
-import DivideCommand from "../../utils/DivideCommand";
-import EqualCommand from "../../utils/EqualCommand";
-import MultiplyCommand from "../../utils/MultiplyCommand";
-import PlusCommand from "../../utils/PlusCommand";
-import SubtractCommand from "../../utils/SubtractCommand";
 
 const calcSlice = createSlice({
   name: "calc",
@@ -19,9 +14,6 @@ const calcSlice = createSlice({
   reducers: {
     inputNum(state, action) {
       console.log("n: " + action.payload);
-      // if (state.receiver.signs.length === 0) {
-      //   state.receiver.setInitialValue(action.payload);
-      // }
       state.data += action.payload;
       state.expression += action.payload;
     },
@@ -35,8 +27,6 @@ const calcSlice = createSlice({
       console.log("+: " + action.payload);
       state.receiver.setInputs(state.data);
       state.receiver.setInputs("+");
-      // state.receiver.setSign("+");
-      // state.receiver.setCommand(new PlusCommand(state.data));
       state.data = "";
       state.expression = state.receiver.getExpression();
     },
@@ -44,8 +34,6 @@ const calcSlice = createSlice({
       console.log("-: " + action.payload);
       state.receiver.setInputs(state.data);
       state.receiver.setInputs("-");
-      // state.receiver.setSign("-");
-      // state.receiver.setCommand(new SubtractCommand(state.data));
       state.data = "";
       state.expression = state.receiver.getExpression();
     },
@@ -53,8 +41,6 @@ const calcSlice = createSlice({
       console.log("*: " + action.payload);
       state.receiver.setInputs(state.data);
       state.receiver.setInputs("*");
-      // state.receiver.setSign("*");
-      // state.receiver.setCommand(new MultiplyCommand(state.data));
       state.data = "";
       state.expression = state.receiver.getExpression();
     },
@@ -62,18 +48,17 @@ const calcSlice = createSlice({
       console.log("/: " + action.payload);
       state.receiver.setInputs(state.data);
       state.receiver.setInputs("/");
-      // state.receiver.setSign("/");
-      // state.receiver.setCommand(new DivideCommand(state.data));
       state.data = "";
       state.expression = state.receiver.getExpression();
     },
     leftBracket(state, action) {
-      // state.receiver.setSign("(");
+      state.receiver.setInputs("(");
       state.data = "";
       state.expression = state.receiver.getExpression();
     },
     rightBracket(state, action) {
-      // state.receiver.setSign(")");
+      state.receiver.setInputs(state.data);
+      state.receiver.setInputs(")");
       state.data = "";
       state.expression = state.receiver.getExpression();
     },
@@ -82,8 +67,8 @@ const calcSlice = createSlice({
       if (state.data) {
         state.receiver.setInputs(state.data);
       }
+
       state.receiver.setCommands();
-      state.receiver.setInitialValue();
       state.result = state.receiver.execute();
       state.history.push(state.expression + "=" + state.result);
       state.expression = "";

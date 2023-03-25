@@ -1,10 +1,11 @@
 class DivideCommand {
-  constructor(valueToDivide) {
-    this.value = valueToDivide;
+  constructor(valueToDivide, v2) {
+    this.value = Number(valueToDivide);
+    this.v2 = Number(v2);
   }
 
-  execute(value) {
-    const res = value / this.value;
+  execute() {
+    const res = this.value / this.v2;
     const fixed = res !== Infinity ? res.toFixed(3) : Infinity;
     return res % 1 ? Number(fixed) : res;
   }

@@ -1,10 +1,11 @@
 class PlusCommand {
-  constructor(valueToAdd) {
+  constructor(valueToAdd, v2) {
     this.value = Number(valueToAdd);
+    this.v2 = Number(v2);
   }
 
-  execute(value) {
-    const res = value + this.value;
+  execute() {
+    const res = this.v2 + this.value;
     const fixed = res !== Infinity ? res.toFixed(3) : Infinity;
     return res % 1 ? Number(fixed) : res;
   }

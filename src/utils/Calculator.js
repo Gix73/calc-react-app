@@ -1,18 +1,21 @@
-import commandsCreater from "../monipulation/CommandsCreater";
-import inputsSort from "../monipulation/InputsSort";
+import correctExpression from "../monipulation/CorrectExpression";
+import createPolishNotation from "../monipulation/CreatePolishNotation";
+import polishSolver from "../monipulation/PolishSolver";
 
 class Calculator {
   constructor() {
     this.commands = [];
     this.inputs = [];
-    this.initialValues = [];
+    this.newValues = [];
     this.current = 0;
     this.result = 0;
   }
 
   setCommands() {
-    this.inputs = inputsSort(this.inputs);
-    this.commands = commandsCreater(this.inputs);
+    this.inputs = correctExpression(this.inputs);
+    this.inputs = createPolishNotation(this.inputs);
+    const data = polishSolver(this.inputs);
+    this.commands = [...data.reverse()];
   }
 
   setInputs(input) {
@@ -33,12 +36,6 @@ class Calculator {
     return this.inputs.join("");
   }
 
-  setInitialValue() {
-    for (let i = 0; i < this.commands.length; i++) {
-      this.initialValues.push(0);
-    }
-  }
-
   getResult() {
     let result = this.result;
     this.commands = [];
@@ -48,16 +45,32 @@ class Calculator {
   }
 
   execute() {
-    debugger;
-    for (let i = 0; i < this.commands.length; i++) {
-      for (let j = 0; j < this.commands[i].length; j++) {
-        this.initialValues[i] = this.commands[i][j].execute(
-          this.initialValues[i]
-        );
+    for (let i = this.commands.length - 1; i > -1; i--) {
+      if (
+        !Number.isNaN(this.commands[i].value) &&
+        !Number.isNaN(this.commands[i].v2)
+      ) {
+        this.newValues.push(this.commands[i].execute());
+        this.commands.pop();
+      } else if (!Number.isNaN(this.commands[i].value)) {
+        this.commands[i].v2 = this.newValues.pop();
+        this.newValues.push(this.commands[i].execute());
+        this.commands.pop();
+      } else if (!Number.isNaN(this.commands[i].v2)) {
+        this.commands[i].value = this.newValues.pop();
+        this.newValues.push(this.commands[i].execute());
+        this.commands.pop();
+      } else if (
+        Number.isNaN(this.commands[i].value) &&
+        Number.isNaN(this.commands[i].v2)
+      ) {
+        this.commands[i].v2 = this.newValues.pop();
+        this.commands[i].value = this.newValues.pop();
+        this.newValues.push(this.commands[i].execute());
+        this.commands.pop();
       }
     }
-
-    this.result = this.initialValues.reduce((acc, e, i) => acc + e);
+    this.result = this.newValues.pop();
     this.initialValues = [];
     this.commands = [];
     this.inputs = [];
