@@ -62,6 +62,13 @@ const calcSlice = createSlice({
       state.data = "";
       state.expression = state.receiver.getExpression();
     },
+    remainderDiv(state, action) {
+      console.log("%: " + action.payload);
+      state.receiver.setInputs(state.data);
+      state.receiver.setInputs("%");
+      state.data = "";
+      state.expression = state.receiver.getExpression();
+    },
     equal(state, action) {
       console.log("equal");
       if (state.data) {
@@ -85,6 +92,7 @@ export const {
   multiply,
   divide,
   equal,
+  remainderDiv,
   leftBracket,
   rightBracket,
 } = calcSlice.actions;

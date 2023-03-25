@@ -41,6 +41,7 @@ export const buttonsArr = [
   "(",
   "0",
   ")",
+  "%",
   "CE",
 ];
 

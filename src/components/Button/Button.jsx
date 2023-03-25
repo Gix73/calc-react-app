@@ -1,9 +1,11 @@
 import { ButtonWrapper, CustomButton } from "./styled";
 
-const Button = (props) => {
+const Button = ({ pos, func, name }) => {
   return (
-    <ButtonWrapper>
-      <CustomButton onClick={props.func}>{props.name}</CustomButton>
+    <ButtonWrapper pos={pos}>
+      <CustomButton pos={pos} onClick={func}>
+        {name}
+      </CustomButton>
     </ButtonWrapper>
   );
 };

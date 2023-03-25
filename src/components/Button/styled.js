@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const CustomButton = styled.button`
-  width: 100px;
+  width: ${(props) => (props.pos === true ? "100%" : "100px")};
   height: 100px;
   font-size: 40px;
   border-radius: 30px;
@@ -14,4 +14,9 @@ export const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  ${(props) => {
+    if (props.pos === true) {
+      return "grid-column: 1 / -1";
+    }
+  }}
 `;

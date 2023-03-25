@@ -5,6 +5,7 @@ import {
   leftBracket,
   multiply,
   plus,
+  remainderDiv,
   rightBracket,
   subtract,
 } from "../store/slices/CalcSlice";
@@ -34,5 +35,8 @@ export default function setFunction(d, val) {
   }
   if (val === ")") {
     d(rightBracket());
+  }
+  if (val === "%") {
+    d(remainderDiv());
   }
 }

@@ -1,6 +1,7 @@
 import DivideCommand from "../utils/DivideCommand";
 import MultiplyCommand from "../utils/MultiplyCommand";
 import PlusCommand from "../utils/PlusCommand";
+import RemainderDivCommand from "../utils/RemainderDivCommand";
 import SubtractCommand from "../utils/SubtractCommand";
 import getPriority from "./GetPriority";
 
@@ -51,6 +52,10 @@ export default function polishSolver(inputs) {
           inputsArr.push(new DivideCommand(current, next));
           commands.push(new DivideCommand(current, next));
         }
+        if (inputs[i] === "%") {
+          inputsArr.push(new RemainderDivCommand(current, next));
+          commands.push(new RemainderDivCommand(current, next));
+        }
       } else {
         if (inputs[i] === "+") {
           inputsArr.push(new PlusCommand(b, a));
@@ -67,6 +72,10 @@ export default function polishSolver(inputs) {
         if (inputs[i] === "/") {
           inputsArr.push(new DivideCommand(b, a));
           commands.push(new DivideCommand(b, a));
+        }
+        if (inputs[i] === "%") {
+          inputsArr.push(new RemainderDivCommand(b, a));
+          commands.push(new RemainderDivCommand(b, a));
         }
       }
     }
