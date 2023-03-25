@@ -13,9 +13,16 @@ const calcSlice = createSlice({
   },
   reducers: {
     inputNum(state, action) {
+      if (action.payload === ".") {
+        if (!state.data.includes(".")) {
+          state.data += action.payload;
+          state.expression += action.payload;
+        }
+      } else {
+        state.data += action.payload;
+        state.expression += action.payload;
+      }
       console.log("n: " + action.payload);
-      state.data += action.payload;
-      state.expression += action.payload;
     },
     inputSign(state, action) {
       console.log("s: " + action.payload);

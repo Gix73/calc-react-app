@@ -13,7 +13,7 @@ import {
 } from "../store/slices/CalcSlice";
 
 export default function setFunction(d, val) {
-  let num = "1234567890";
+  let num = "1234567890.";
   if (num.includes(val)) {
     d(inputNum(val));
   }
