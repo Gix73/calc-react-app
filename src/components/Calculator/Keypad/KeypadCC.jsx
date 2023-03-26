@@ -4,6 +4,7 @@ import setFunction from "../../../constants/buttons";
 import { buttonsArr } from "../../../constants/constants";
 import ButtonCC from "../../Button/ButtonCC";
 import { KeypadWrapper } from "./styled";
+import PropTypes from "prop-types";
 
 class KeypadCC extends React.Component {
   render() {
@@ -23,6 +24,11 @@ class KeypadCC extends React.Component {
     );
   }
 }
+
+KeypadCC.propTypes = {
+  btnColor: PropTypes.string,
+  dispatch: PropTypes.func,
+};
 
 const mapStateToProps = (state) => ({
   btnColor: state.theme.btnColor,

@@ -8,6 +8,7 @@ import {
   HistoryRes,
   SpanHist,
 } from "./styled";
+import PropTypes from "prop-types";
 
 class HistoryCC extends React.Component {
   render() {
@@ -29,6 +30,11 @@ class HistoryCC extends React.Component {
     );
   }
 }
+
+HistoryCC.propTypes = {
+  history: PropTypes.array,
+  historyData: PropTypes.string,
+};
 
 const mapStateToProps = (state) => ({
   history: state.calc.history,

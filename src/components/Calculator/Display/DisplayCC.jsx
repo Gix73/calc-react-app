@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { ResSpan, ScreenWrapper } from "./styled";
+import PropTypes from "prop-types";
 
 class DisplayCC extends React.Component {
   render() {
@@ -12,6 +13,11 @@ class DisplayCC extends React.Component {
     );
   }
 }
+
+DisplayCC.propTypes = {
+  result: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  expression: PropTypes.string,
+};
 
 const mapStateToProps = (state) => ({
   result: state.calc.result,

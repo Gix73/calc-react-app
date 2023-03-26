@@ -1,5 +1,6 @@
 import React from "react";
 import { ButtonWrapper, CustomButton } from "./styled";
+import PropTypes from "prop-types";
 
 class ButtonCC extends React.Component {
   render() {
@@ -13,5 +14,11 @@ class ButtonCC extends React.Component {
     );
   }
 }
+
+ButtonCC.propTypes = {
+  pos: PropTypes.bool,
+  name: PropTypes.string,
+  func: PropTypes.func,
+};
 
 export default ButtonCC;
