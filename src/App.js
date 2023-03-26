@@ -5,6 +5,7 @@ import Calculator from "@components/Calculator/Calculator";
 import Settings from "./pages/Settings/Settings";
 import { useSelector } from "react-redux";
 import CalculatorCC from "./components/Calculator/CalculatorCC";
+import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
 
 const AppWrapper = styled.div`
   max-width: 100%;
@@ -17,16 +18,18 @@ const AppWrapper = styled.div`
 function App() {
   const themeColor = useSelector((state) => state.theme);
   return (
-    <ThemeProvider theme={themeColor}>
-      <AppWrapper>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Calculator />} />
-          <Route path="/settings" element={<Settings />} />
-          <Route path="/calcCC" element={<CalculatorCC />} />
-        </Routes>
-      </AppWrapper>
-    </ThemeProvider>
+    <ErrorBoundary>
+      <ThemeProvider theme={themeColor}>
+        <AppWrapper>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Calculator />} />
+            <Route path="/settings" element={<Settings />} />
+            <Route path="/calcCC" element={<CalculatorCC />} />
+          </Routes>
+        </AppWrapper>
+      </ThemeProvider>
+    </ErrorBoundary>
   );
 }
 
