@@ -29,7 +29,13 @@ class Calculator {
   }
 
   clearData() {
+    this.commands = [];
     this.inputs = [];
+    this.newValues = [];
+    this.current = 0;
+    this.result = 0;
+    this.lBrackets = 0;
+    this.rBrackets = 0;
   }
 
   setInputs(input) {

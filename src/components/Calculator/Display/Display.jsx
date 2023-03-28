@@ -5,7 +5,7 @@ const Display = () => {
   const { result, expression } = useSelector((state) => state.calc);
   return (
     <ScreenWrapper>
-      <ResSpan>{expression ? expression : result}</ResSpan>
+      <ResSpan id="expression">{expression ? expression : result}</ResSpan>
     </ScreenWrapper>
   );
 };
