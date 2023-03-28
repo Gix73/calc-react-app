@@ -2,12 +2,12 @@ import {
   exp,
   logicExp,
   bracketsExp,
-  exeptionExp,
+  exceptionExp,
 } from "../testVal/expressions";
 
 describe("Show calcFC page", () => {
-  it("should open '/'", () => {
-    cy.visit("/");
+  it("should open '/calcCC'", () => {
+    cy.visit("/calcCC");
 
     cy.get("h1").should("have.text", "Calculator app");
   });
@@ -31,7 +31,7 @@ describe("Show Settings page", () => {
 
 describe("Check easy expressions", () => {
   it("Should check result", () => {
-    cy.visit("/");
+    cy.visit("/calcCC");
 
     exp.forEach((e) => {
       cy.checkExpResult(e);
@@ -41,7 +41,7 @@ describe("Check easy expressions", () => {
 
 describe("Check expressions with logic", () => {
   it("Should check result", () => {
-    cy.visit("/");
+    cy.visit("/calcCC");
 
     logicExp.forEach((e) => {
       cy.checkExpResult(e);
@@ -51,7 +51,7 @@ describe("Check expressions with logic", () => {
 
 describe("Check expressions with logic and brackets", () => {
   it("Should check result", () => {
-    cy.visit("/");
+    cy.visit("/calcCC");
 
     bracketsExp.forEach((e) => {
       cy.checkExpResult(e);
@@ -59,11 +59,11 @@ describe("Check expressions with logic and brackets", () => {
   });
 });
 
-describe("Check expressions with exeptions", () => {
+describe("Check expressions with exceptions", () => {
   it("Should check result", () => {
-    cy.visit("/");
+    cy.visit("/calcCC");
 
-    exeptionExp.forEach((e) => {
+    exceptionExp.forEach((e) => {
       cy.checkExpResult(e);
     });
   });

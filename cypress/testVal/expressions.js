@@ -63,7 +63,7 @@ export const bracketsExp = [
   },
 ];
 
-export const exeptionExp = [
+export const exceptionExp = [
   {
     expression: "0/1=",
     result: "0",
