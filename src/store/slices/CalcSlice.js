@@ -59,6 +59,9 @@ const calcSlice = createSlice({
       state.expression = state.receiver.getExpression();
     },
     leftBracket(state, action) {
+      if (state.data) {
+        state.receiver.setInputs(state.data);
+      }
       state.receiver.setInputs("(");
       state.data = "";
       state.expression = state.receiver.getExpression();

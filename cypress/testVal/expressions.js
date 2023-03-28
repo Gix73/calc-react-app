@@ -55,6 +55,6 @@ export const bracketsExp = [
   },
   {
     expression: ")))(1+3(1-2)=",
-    result: "-4",
+    result: "-2",
   },
 ];
