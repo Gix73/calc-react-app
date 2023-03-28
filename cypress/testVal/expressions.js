@@ -57,4 +57,23 @@ export const bracketsExp = [
     expression: ")))(1+3(1-2)=",
     result: "-2",
   },
+  {
+    expression: "(123))=",
+    result: "123",
+  },
+];
+
+export const exeptionExp = [
+  {
+    expression: "0/1=",
+    result: "0",
+  },
+  {
+    expression: "1/0=",
+    result: "Infinity",
+  },
+  {
+    expression: "0*0/0*0=",
+    result: "NaN",
+  },
 ];

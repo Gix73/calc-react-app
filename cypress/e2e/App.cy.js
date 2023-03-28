@@ -1,4 +1,9 @@
-import { exp, logicExp, bracketsExp } from "../testVal/expressions";
+import {
+  exp,
+  logicExp,
+  bracketsExp,
+  exeptionExp,
+} from "../testVal/expressions";
 
 describe("Show calcFC page", () => {
   it("should open '/'", () => {
@@ -49,6 +54,16 @@ describe("Check expressions with logic and brackets", () => {
     cy.visit("/");
 
     bracketsExp.forEach((e) => {
+      cy.checkExpResult(e);
+    });
+  });
+});
+
+describe("Check expressions with exeptions", () => {
+  it("Should check result", () => {
+    cy.visit("/");
+
+    exeptionExp.forEach((e) => {
       cy.checkExpResult(e);
     });
   });
