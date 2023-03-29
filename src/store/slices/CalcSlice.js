@@ -22,37 +22,31 @@ const calcSlice = createSlice({
         state.data += action.payload;
         state.expression += action.payload;
       }
-      console.log("n: " + action.payload);
     },
     inputSign(state, action) {
-      console.log("s: " + action.payload);
       state.receiver.setInputs(state.data);
       state.data = "";
       state.receiver.setCommand(action.payload);
     },
     plus(state, action) {
-      console.log("+: " + action.payload);
       state.receiver.setInputs(state.data);
       state.receiver.setInputs("+");
       state.data = "";
       state.expression = state.receiver.getExpression();
     },
     subtract(state, action) {
-      console.log("-: " + action.payload);
       state.receiver.setInputs(state.data);
       state.receiver.setInputs("-");
       state.data = "";
       state.expression = state.receiver.getExpression();
     },
     multiply(state, action) {
-      console.log("*: " + action.payload);
       state.receiver.setInputs(state.data);
       state.receiver.setInputs("*");
       state.data = "";
       state.expression = state.receiver.getExpression();
     },
     divide(state, action) {
-      console.log("/: " + action.payload);
       state.receiver.setInputs(state.data);
       state.receiver.setInputs("/");
       state.data = "";
@@ -73,7 +67,6 @@ const calcSlice = createSlice({
       state.expression = state.receiver.getExpression();
     },
     remainderDiv(state, action) {
-      console.log("%: " + action.payload);
       state.receiver.setInputs(state.data);
       state.receiver.setInputs("%");
       state.data = "";
@@ -96,7 +89,6 @@ const calcSlice = createSlice({
       state.history = [];
     },
     equal(state, action) {
-      console.log("equal");
       if (state.data) {
         state.receiver.setInputs(state.data);
       }

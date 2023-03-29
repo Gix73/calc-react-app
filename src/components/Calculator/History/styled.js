@@ -5,7 +5,7 @@ export const HistoryWrapper = styled.div`
   grid-area: history;
   padding: 0px 10px;
   border-left: 5px solid grey;
-  overflow: auto;
+  overflow-x: auto;
 `;
 
 export const SpanHist = styled.div`

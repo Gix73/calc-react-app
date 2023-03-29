@@ -8,6 +8,7 @@ export const ScreenWrapper = styled.div`
   padding: 0px 50px 10px 50px;
   border-bottom: 5px solid grey;
   overflow: scroll;
+  min-height: 60px;
   @media (max-width: 768px) {
     padding: 0px 10px 10px;
   }
