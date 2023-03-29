@@ -11,4 +11,9 @@ export const CalcWrapper = styled.main`
   grid-template-columns: 10fr 2fr;
   grid-gap: 10px;
   padding: 15px;
+
+  @media (max-width: 768px) {
+    grid-template-rows: 2fr 14fr;
+    grid-template-columns: 10fr 8fr;
+  }
 `;

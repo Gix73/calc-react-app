@@ -5,6 +5,7 @@ export const HistoryWrapper = styled.div`
   grid-area: history;
   padding: 0px 10px;
   border-left: 5px solid grey;
+  overflow: auto;
 `;
 
 export const SpanHist = styled.div`
@@ -13,6 +14,10 @@ export const SpanHist = styled.div`
   font-weight: bold;
   margin: 0 auto;
   justify-content: center;
+
+  @media (max-width: 768px) {
+    font-size: 15px;
+  }
 `;
 
 export const ResultWrapper = styled.div`
@@ -24,6 +29,9 @@ export const ResultWrapper = styled.div`
   align-items: center;
   margin-top: 30px;
   font-size: 25px;
+  @media (max-width: 768px) {
+    font-size: 10px;
+  }
 `;
 
 export const HistoryRes = styled.div`
@@ -37,10 +45,16 @@ export const HistoryRes = styled.div`
   width: 90%;
   height: auto;
   text-align: center;
+  @media (max-width: 768px) {
+    margin-top: 10px;
+  }
 `;
 
 export const ClearButton = styled.button`
   font-size: 12px;
   width: 100%;
   height: auto;
+  @media (max-width: 768px) {
+    font-size: 8px;
+  }
 `;

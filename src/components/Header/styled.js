@@ -9,12 +9,18 @@ export const HeaderWrapper = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 0px 30px 0px 30px;
+  @media (max-width: 1024px) {
+    justify-content: center;
+  }
 `;
 export const LogoWrapper = styled.div`
   cursor: default;
   font-size: 25px;
   text-decoration: none;
   color: white;
+  @media (max-width: 1024px) {
+    display: none;
+  }
 `;
 export const Nav = styled.nav`
   display: flex;
@@ -29,5 +35,9 @@ export const StyledLink = styled(NavLink)`
 
   &[aria-current] {
     text-decoration: underline;
+  }
+
+  @media (max-width: 1024px) {
+    font-size: 15px;
   }
 `;
