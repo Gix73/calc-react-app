@@ -39,20 +39,16 @@ export default function polishSolver(inputs) {
         if (inputs[i] === "+") {
           inputsArr.push(new PlusCommand(current, next));
           commands.push(new PlusCommand(current, next));
-        }
-        if (inputs[i] === "-") {
+        } else if (inputs[i] === "-") {
           inputsArr.push(new SubtractCommand(current, next));
           commands.push(new SubtractCommand(current, next));
-        }
-        if (inputs[i] === "*") {
+        } else if (inputs[i] === "*") {
           inputsArr.push(new MultiplyCommand(current, next));
           commands.push(new MultiplyCommand(current, next));
-        }
-        if (inputs[i] === "/") {
+        } else if (inputs[i] === "/") {
           inputsArr.push(new DivideCommand(current, next));
           commands.push(new DivideCommand(current, next));
-        }
-        if (inputs[i] === "%") {
+        } else if (inputs[i] === "%") {
           inputsArr.push(new RemainderDivCommand(current, next));
           commands.push(new RemainderDivCommand(current, next));
         }
@@ -60,20 +56,16 @@ export default function polishSolver(inputs) {
         if (inputs[i] === "+") {
           inputsArr.push(new PlusCommand(b, a));
           commands.push(new PlusCommand(b, a));
-        }
-        if (inputs[i] === "-") {
+        } else if (inputs[i] === "-") {
           inputsArr.push(new SubtractCommand(b, a));
           commands.push(new SubtractCommand(b, a));
-        }
-        if (inputs[i] === "*") {
+        } else if (inputs[i] === "*") {
           inputsArr.push(new MultiplyCommand(b, a));
           commands.push(new MultiplyCommand(b, a));
-        }
-        if (inputs[i] === "/") {
+        } else if (inputs[i] === "/") {
           inputsArr.push(new DivideCommand(b, a));
           commands.push(new DivideCommand(b, a));
-        }
-        if (inputs[i] === "%") {
+        } else if (inputs[i] === "%") {
           inputsArr.push(new RemainderDivCommand(b, a));
           commands.push(new RemainderDivCommand(b, a));
         }

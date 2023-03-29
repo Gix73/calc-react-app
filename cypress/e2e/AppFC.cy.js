@@ -127,7 +127,7 @@ describe("Check CE button", () => {
 });
 
 describe("Check history clear button", () => {
-  it("Should clear only history", () => {
+  it("Should clear only history or all data", () => {
     cy.visit("/");
     cy.checkHistory(history);
     cy.contains("Clear history").click();
