@@ -31,6 +31,10 @@ export default function correctExpression(inputs) {
       expression.push("*");
     }
 
+    if (!"+-*/%.()".includes(current) && inputs[i - 1] === ")") {
+      expression.push("*");
+    }
+
     expression.push(current);
     if (i === inputs.length - 1) {
       if ("+-*/%".includes(inputs[i])) {
