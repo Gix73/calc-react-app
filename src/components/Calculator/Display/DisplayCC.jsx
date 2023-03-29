@@ -8,7 +8,7 @@ class DisplayCC extends React.Component {
     const { result, expression } = this.props;
     return (
       <ScreenWrapper>
-        <ResSpan>{expression ? expression : result}</ResSpan>
+        <ResSpan id="expression">{expression ? expression : result}</ResSpan>
       </ScreenWrapper>
     );
   }

@@ -21,7 +21,7 @@ const History = () => {
       <SpanHist>
         <span>History</span>
       </SpanHist>
-      <ResultWrapper>{historyData}</ResultWrapper>
+      <ResultWrapper id="histRes">{historyData}</ResultWrapper>
       <ClearButton onClick={() => dispatch(clearHistory())}>
         Clear history
       </ClearButton>

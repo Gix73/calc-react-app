@@ -3,6 +3,7 @@ import {
   logicExp,
   bracketsExp,
   exceptionExp,
+  history,
 } from "../testVal/expressions";
 
 describe("Show calcFC page", () => {
@@ -66,5 +67,12 @@ describe("Check expressions with exceptions", () => {
     exceptionExp.forEach((e) => {
       cy.checkExpResult(e);
     });
+  });
+});
+
+describe("Check history", () => {
+  it("Check history data", () => {
+    cy.visit("/calcCC");
+    cy.checkHistory(history);
   });
 });

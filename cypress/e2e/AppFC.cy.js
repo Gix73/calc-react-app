@@ -5,6 +5,7 @@ import {
   bracketsExp,
   exceptionExp,
   theme,
+  history,
 } from "../testVal/expressions";
 
 describe("Show calcFC page", () => {
@@ -105,5 +106,12 @@ describe("Check theme", () => {
   it("Should check theme changer", () => {
     cy.visit("/settings");
     cy.checkTheme(theme);
+  });
+});
+
+describe("Check history", () => {
+  it("Check history data", () => {
+    cy.visit("/");
+    cy.checkHistory(history);
   });
 });

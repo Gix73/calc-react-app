@@ -95,3 +95,18 @@ export const theme = [
     color: "rgb(0, 0, 0)",
   },
 ];
+
+export const history = [
+  {
+    expression: "1+2*3-4/5=",
+    result: "1+2*3-4/5=6.200",
+  },
+  {
+    expression: ")))(1+3(1-2)=",
+    result: "(1+3(1-2))=-2",
+  },
+  {
+    expression: "((((1)=",
+    result: "((((1))))=1",
+  },
+];

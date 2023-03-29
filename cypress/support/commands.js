@@ -47,3 +47,10 @@ Cypress.Commands.add("checkTheme", (theme) => {
       .should("have.css", "color", `${data.color}`);
   });
 });
+
+Cypress.Commands.add("checkHistory", (data) => {
+  data.forEach((exp) => {
+    cy.pressExp(exp.expression);
+    cy.get("#histRes").children().last().should("have.text", exp.result);
+  });
+});

@@ -22,7 +22,7 @@ class HistoryCC extends React.Component {
         <SpanHist>
           <span>History</span>
         </SpanHist>
-        <ResultWrapper>{historyData}</ResultWrapper>
+        <ResultWrapper id="histRes">{historyData}</ResultWrapper>
         <ClearButton onClick={() => this.props.dispatch(clearHistory())}>
           Clear history
         </ClearButton>
