@@ -76,3 +76,30 @@ describe("Check history", () => {
     cy.checkHistory(history);
   });
 });
+
+describe("Check CE button", () => {
+  it("Should clear expression and history", () => {
+    cy.visit("/calcCC");
+    cy.checkHistory(history);
+    cy.get('[data-test="CE"]').click();
+    cy.get("#expression").should("have.text", "0");
+    cy.get("#histRes").children().should("have.length", 0);
+  });
+});
+
+describe("Check history clear button", () => {
+  it("Should clear only history", () => {
+    cy.visit("/calcCC");
+    cy.checkHistory(history);
+    cy.contains("Clear history").click();
+    cy.get("#histRes").children().should("have.length", 0);
+    cy.get("#expression").should("have.text", "1");
+
+    cy.checkHistory(history);
+    cy.visit("/settings");
+    cy.contains("Clear All History").click();
+    cy.visit("/calcCC");
+    cy.get("#histRes").children().should("have.length", 0);
+    cy.get("#expression").should("have.text", "0");
+  });
+});
