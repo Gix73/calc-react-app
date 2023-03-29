@@ -38,3 +38,12 @@ Cypress.Commands.add("checkExpResult", (exp) => {
   cy.get("#expression").should("have.text", exp.result);
   cy.get('[data-test="C"]').click();
 });
+
+Cypress.Commands.add("checkTheme", (theme) => {
+  theme.forEach((data) => {
+    cy.get("select").select(`${data.select}`);
+    cy.get("#mainWrapper")
+      .should("have.css", "background-color", `${data.bgColor}`)
+      .should("have.css", "color", `${data.color}`);
+  });
+});

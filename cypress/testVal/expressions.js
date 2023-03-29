@@ -77,3 +77,21 @@ export const exceptionExp = [
     result: "NaN",
   },
 ];
+
+export const theme = [
+  {
+    select: "Dark Theme",
+    bgColor: "rgb(73, 73, 73)",
+    color: "rgb(255, 255, 255)",
+  },
+  {
+    select: "Colored Theme",
+    bgColor: "rgb(54, 74, 70)",
+    color: "rgb(139, 232, 215)",
+  },
+  {
+    select: "Light Theme",
+    bgColor: "rgb(255, 255, 255)",
+    color: "rgb(0, 0, 0)",
+  },
+];

@@ -20,7 +20,7 @@ function App() {
   return (
     <ErrorBoundary>
       <ThemeProvider theme={themeColor}>
-        <AppWrapper>
+        <AppWrapper id="mainWrapper">
           <Header />
           <Routes>
             <Route path="/" element={<Calculator />} />

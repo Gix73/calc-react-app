@@ -4,10 +4,11 @@ import {
   logicExp,
   bracketsExp,
   exceptionExp,
+  theme,
 } from "../testVal/expressions";
 
 describe("Show calcFC page", () => {
-  it("should open '/'", () => {
+  it("Should open '/'", () => {
     cy.visit("/");
 
     cy.get("h1").should("have.text", "Calculator app");
@@ -15,7 +16,7 @@ describe("Show calcFC page", () => {
 });
 
 describe("Show calcCC page", () => {
-  it("should open '/calcCC'", () => {
+  it("Should open '/calcCC'", () => {
     cy.visit("/calcCC");
 
     cy.get("h1").should("have.text", "Calculator app");
@@ -23,7 +24,7 @@ describe("Show calcCC page", () => {
 });
 
 describe("Show Settings page", () => {
-  it("should open '/settings'", () => {
+  it("Should open '/settings'", () => {
     cy.visit("/settings");
 
     cy.get("h1").should("have.text", "Calculator app");
@@ -70,8 +71,8 @@ describe("Check expressions with exceptions", () => {
   });
 });
 
-describe("check keypad buttons", () => {
-  it("check all buttons value", () => {
+describe("Check keypad buttons", () => {
+  it("Check all buttons value", () => {
     cy.visit("/");
 
     cy.pressExp("(1+2-3*4/5%6.7890)");
@@ -87,8 +88,8 @@ describe("check keypad buttons", () => {
   });
 });
 
-describe("check navigation", () => {
-  it("check link of settings", () => {
+describe("Check navigation", () => {
+  it("Check link of settings", () => {
     cy.visit("/");
 
     const paths = Object.keys(path);
@@ -97,5 +98,12 @@ describe("check navigation", () => {
       cy.get(`a[href="${path[pathName]}"]`).click();
       cy.location("pathname").should("eq", `${path[pathName]}`);
     });
+  });
+});
+
+describe("Check theme", () => {
+  it("Should check theme changer", () => {
+    cy.visit("/settings");
+    cy.checkTheme(theme);
   });
 });
